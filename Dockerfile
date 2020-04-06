@@ -13,4 +13,6 @@ RUN pip3 install awscli
 
 RUN set -o vi
 
+COPY bashrc.sh /root/.bashrc
+
 CMD ["sleep", "infinity"]
