@@ -1,12 +1,16 @@
-FROM centos:latest
+FROM debian:stable-slim
 
-ENV TOKEN=none
+WORKDIR /kubastion
 
-RUN yum -y update && \
-    yum -y install bind-utils && \
-    yum -y install postgresql \ 
-    yum -y install telnet \
-    yum -y install httpie
+RUN apt update -y
+RUN apt install -y dnsutils inetutils-tools inetutils-traceroute curl httpie
+RUN apt install -y vim python3 jq python3-distutils
+
+# Install PIP  & AWS Client
+RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    python3 get-pip.py
+RUN pip3 install awscli
+
 RUN set -o vi
 
-CMD [ "/bin/sleep", "3600" ]
+CMD ["sleep", "infinity"]
