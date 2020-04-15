@@ -3,7 +3,7 @@ FROM debian:stable-slim
 WORKDIR /kubastion
 
 RUN apt update -y
-RUN apt install -y dnsutils inetutils-tools inetutils-traceroute curl httpie
+RUN apt install -y dnsutils inetutils-tools inetutils-traceroute curl httpie netcat
 RUN apt install -y vim python3 jq python3-distutils
 
 # Install PIP  & AWS Client
