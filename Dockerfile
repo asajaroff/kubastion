@@ -1,15 +1,11 @@
-FROM debian:stable-slim
+FROM debian:bookworm-slim
 
 WORKDIR /kubastion
 
 RUN apt update -y
-RUN apt install -y dnsutils inetutils-tools inetutils-traceroute curl httpie netcat
-RUN apt install -y vim python3 jq python3-distutils
+RUN apt install -y dnsutils inetutils-tools inetutils-traceroute curl httpie netcat-traditional
+RUN apt install -y awscli
 
-# Install PIP  & AWS Client
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-    python3 get-pip.py
-RUN pip3 install awscli
 
 RUN set -o vi
 
