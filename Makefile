@@ -26,6 +26,7 @@ build:
 	  --build-arg BUILD_DATE=$(shell date -u +'%Y-%m-%dT%H:%M:%SZ') \
 	  --build-arg BUILD_VCS_REF=$(shell git rev-parse --short HEAD) \
 	  --build-arg BUILD_VERSION=$(VERSION) \
+	  --platform linux/amd64,linux/arm64 \
 	  -t $(TAG) \
 	  --load \
 	  .
@@ -35,8 +36,7 @@ push:
 	  --build-arg BUILD_DATE=$(shell date -u +'%Y-%m-%dT%H:%M:%SZ') \
 	  --build-arg BUILD_VCS_REF=$(shell git rev-parse --short HEAD) \
 	  --build-arg BUILD_VERSION=$(VERSION) \
-	  --cache-from=type=registry,ref=$(CACHE_TAG) \
-	  --cache-to=type=registry,ref=$(CACHE_TAG),mode=max \
+	  --platform linux/amd64,linux/arm64 \
 	  -t $(TAG) \
 	  --push \
 	  --progress=plain \
